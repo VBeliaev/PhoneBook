@@ -7,14 +7,13 @@ import com.getjavajob.belyaev.model.Employe;
 import com.getjavajob.belyaev.model.Telephone;
 import com.getjavajob.belyaev.validator.Validator;
 
-import java.util.Scanner;
 import java.util.TreeSet;
 
 public class EmployeService {
 
     private  TreeSet<Employe> employeBase = new TreeSet<>();
 
-    private  int globalTempId = 0;
+    private  static int globalTempId = 0;
 
     public  TreeSet<Employe> getEmployeBase() {
         return employeBase;
@@ -24,7 +23,7 @@ public class EmployeService {
         this.employeBase = employeBase;
     }
 
-    public  int getGlobalTempId() {
+    public static int getGlobalTempId() {
         return ++globalTempId;
     }
 
@@ -67,7 +66,7 @@ public class EmployeService {
         }
     }
 
-    public void add(String name, String surname, String project, Department department, String email) throws WrongDataEntered, Exception {
+    public void add(String name, String surname, String project, Department department, String email) throws WrongDataEntered {
         Employe employe = new Employe(name, surname, project, department, email);
         if (new Validator().validate(employe)) {
             employeBase.add(employe);

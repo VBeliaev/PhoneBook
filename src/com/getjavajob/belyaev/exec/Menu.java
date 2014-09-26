@@ -1,6 +1,5 @@
 package com.getjavajob.belyaev.exec;
 
-import com.getjavajob.belyaev.daoInterfaces.Read;
 import com.getjavajob.belyaev.dataBase.DataBaseWriter;
 import com.getjavajob.belyaev.dataBase.DataBaseReader;
 import com.getjavajob.belyaev.exeption.DataNotFound;
@@ -13,7 +12,6 @@ import com.getjavajob.belyaev.model.Telephone;
 import com.getjavajob.belyaev.service.TelephoneService;
 import com.getjavajob.belyaev.validator.Validator;
 import java.util.Scanner;
-import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +31,7 @@ public class Menu {
     }
     
     public void callMenu() {
-        String choice = "0";
+        String choice;
         do {
             System.out.println("1 - Enter department");
             System.out.println("2 - Enter Employe");
@@ -69,7 +67,7 @@ public class Menu {
                 setDepartmetChief();
                 break;
             case "4":
-                new DataBaseWriter().write(employeService, departmentService, telephoneService);
+                new DataBaseWriter().write(employeService, departmentService);
                 break;
             case "5":
                 new DataBaseReader().read(employeService, departmentService, telephoneService);
@@ -88,7 +86,7 @@ public class Menu {
         departmentService.addDepartment(name);
     }
     
-    private void enterEmploye() throws WrongDataEntered, Exception {
+    private void enterEmploye() throws WrongDataEntered {
         System.out.println("Enter employe name:");
         String name = scanner.nextLine();
         System.out.println("Enter employe surname:");
@@ -99,7 +97,7 @@ public class Menu {
         System.out.println("Enter email:");
         String email = scanner.nextLine();
         Employe employe = new Employe(name, surname, projet, department, email);
-        String ch = "";
+        String ch;
         do {
             System.out.println("Enter CountryCode");
             int country = scanner.nextInt();

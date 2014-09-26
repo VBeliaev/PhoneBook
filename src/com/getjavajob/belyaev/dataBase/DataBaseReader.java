@@ -8,7 +8,6 @@ import com.getjavajob.belyaev.exeption.DataNotFound;
 import com.getjavajob.belyaev.model.Department;
 import com.getjavajob.belyaev.model.Telephone;
 import com.getjavajob.belyaev.service.TelephoneService;
-import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -23,7 +22,7 @@ public class DataBaseReader implements Read {
     private Connection con = new Connect().connect();
 
     @Override
-    public void read(EmployeService employeBase, DepartmentService departmentBase, TelephoneService telephoneBase) throws FileNotFoundException, IOException, Exception {
+    public void read(EmployeService employeBase, DepartmentService departmentBase, TelephoneService telephoneBase) throws Exception {
         readDepartment(departmentBase);
         try (Statement s = con.createStatement()) {
             ResultSet rs = s.executeQuery("Select * from Employe");

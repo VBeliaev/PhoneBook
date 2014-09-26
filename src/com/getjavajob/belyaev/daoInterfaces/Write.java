@@ -8,13 +8,11 @@ package com.getjavajob.belyaev.daoInterfaces;
 
 import com.getjavajob.belyaev.service.DepartmentService;
 import com.getjavajob.belyaev.service.EmployeService;
-import com.getjavajob.belyaev.service.TelephoneService;
-import java.io.IOException;
 
 /**
  *
  * @author Виталий
  */
 public interface Write {
-   
+   public void write(EmployeService employeService, DepartmentService departmentService);
 }

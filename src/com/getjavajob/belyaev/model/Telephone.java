@@ -1,6 +1,5 @@
 package com.getjavajob.belyaev.model;
 
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type;
 
 public class Telephone implements Comparable<Telephone>, ModelInterface {
 
@@ -42,7 +41,7 @@ public class Telephone implements Comparable<Telephone>, ModelInterface {
         return mobile;
     }
 
-    public void setCountryCode(int countryCode) throws Exception {
+    public void setCountryCode(int countryCode){
         this.countryCode = countryCode;
     }
 
@@ -50,7 +49,7 @@ public class Telephone implements Comparable<Telephone>, ModelInterface {
         this.clientId = clientId;
     }
 
-    public void setCityCode(int cityCode) throws Exception {
+    public void setCityCode(int cityCode) {
         this.cityCode = cityCode;
     }
 
@@ -58,7 +57,7 @@ public class Telephone implements Comparable<Telephone>, ModelInterface {
         this.mobile = mobile;
     }
 
-    public void setNumber(int number) throws Exception {
+    public void setNumber(int number){
         this.number = number;
     }
 

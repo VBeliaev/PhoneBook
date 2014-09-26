@@ -1,6 +1,5 @@
 package com.getjavajob.belyaev.service;
 
-import com.getjavajob.belyaev.exeption.DataNotFound;
 import com.getjavajob.belyaev.exeption.WrongDataEntered;
 import com.getjavajob.belyaev.model.Department;
 import com.getjavajob.belyaev.model.Employe;
@@ -39,7 +38,7 @@ public class DepartmentService{
         throw new WrongDataEntered("ThereIsNoSuchDepartment");
     }
 
-    public void setDepartmetChief(Department department , Employe employe) throws WrongDataEntered, DataNotFound {
+    public void setDepartmetChief(Department department , Employe employe) {
         department.setChief(employe);
     }
 }
