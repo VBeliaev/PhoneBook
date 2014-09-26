@@ -1,5 +1,6 @@
 package com.getjavajob.belyaev.service;
 
+import com.getjavajob.belyaev.exeption.DataNotFound;
 import com.getjavajob.belyaev.exeption.WrongDataEntered;
 import com.getjavajob.belyaev.model.Department;
 import com.getjavajob.belyaev.model.Employe;
@@ -40,6 +41,16 @@ public class DepartmentService{
 
     public void setDepartmetChief(Department department , Employe employe) {
         department.setChief(employe);
+    }
+
+    public void setAllChiefsById(EmployeService employeService){
+        for(Department department: departmentBase){
+            try {
+                department.setChief(employeService.get(department.getChiefID()));
+            } catch (DataNotFound dataNotFound) {
+                dataNotFound.printStackTrace();
+            }
+        }
     }
 }
 
