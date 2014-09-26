@@ -1,4 +1,4 @@
-package com.getjavajob.belyaev.dataBase;
+package com.getjavajob.belyaev.dataBaseDao;
 
 import com.getjavajob.belyaev.model.Department;
 import com.getjavajob.belyaev.service.DepartmentService;
@@ -17,13 +17,13 @@ import java.util.logging.Logger;
 public class DataBaseWriter implements Write {
 
     private Connection con = new Connect().connect();
-    private DepartmentService departmentBase;
-    private EmployeService employeBase;
+    private DepartmentService departmentService;
+    private EmployeService employeService;
 
     
-    public void write(EmployeService employeBase, DepartmentService departmentBase) {
-        this.employeBase = employeBase;
-        this.departmentBase = departmentBase;
+    public void write(EmployeService employeService, DepartmentService departmentService) {
+        this.employeService = employeService;
+        this.departmentService = departmentService;
         try {
             writeEmploye();
             writeDepartment();
@@ -33,7 +33,7 @@ public class DataBaseWriter implements Write {
     }
 
     private void writeEmploye() throws SQLException {
-        for (Employe emp : employeBase.getEmployeBase()) {
+        for (Employe emp : employeService.getEmployeBase()) {
 
             try (PreparedStatement ps = con.prepareStatement("Insert into Employe (firstname, surname, projectName,department,email) values( ? , ? ,?, ?, ? ) ;")) {
                 ps.setString(1, emp.getName());
@@ -67,7 +67,7 @@ public class DataBaseWriter implements Write {
     }
 
     private void writeDepartment() throws SQLException {
-        for (Department dep : departmentBase.getDepartmentBase()) {
+        for (Department dep : departmentService.getDepartmentBase()) {
             try (PreparedStatement ps = con.prepareStatement("Insert into Employe (department,chief_id) values(?, ? ) ;")) {
                 ps.setString(1, dep.getDepartmentName());
                 ps.setInt(2, dep.getChiefID());

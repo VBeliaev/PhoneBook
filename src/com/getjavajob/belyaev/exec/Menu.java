@@ -1,7 +1,7 @@
 package com.getjavajob.belyaev.exec;
 
-import com.getjavajob.belyaev.dataBase.DataBaseWriter;
-import com.getjavajob.belyaev.dataBase.DataBaseReader;
+import com.getjavajob.belyaev.dataBaseDao.DataBaseWriter;
+import com.getjavajob.belyaev.dataBaseDao.DataBaseReader;
 import com.getjavajob.belyaev.exeption.DataNotFound;
 import com.getjavajob.belyaev.model.Department;
 import com.getjavajob.belyaev.service.DepartmentService;
@@ -135,6 +135,6 @@ public class Menu {
         Department department = getDepartament();
         System.out.println("Enter employe id:");
         int id = scanner.nextInt();
-        departmentService.setDepartmetChief(department,employeService.get(id));
+        departmentService.setDepartmetChief(department, employeService.get(id));
     }
 }

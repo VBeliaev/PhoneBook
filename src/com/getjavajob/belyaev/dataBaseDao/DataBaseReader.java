@@ -1,4 +1,4 @@
-package com.getjavajob.belyaev.dataBase;
+package com.getjavajob.belyaev.dataBaseDao;
 
 import com.getjavajob.belyaev.model.Employe;
 import com.getjavajob.belyaev.service.DepartmentService;
@@ -22,8 +22,8 @@ public class DataBaseReader implements Read {
     private Connection con = new Connect().connect();
 
     @Override
-    public void read(EmployeService employeBase, DepartmentService departmentBase, TelephoneService telephoneBase) throws Exception {
-        readDepartment(departmentBase);
+    public void read(EmployeService employeService, DepartmentService departmentService, TelephoneService telephoneService) throws Exception {
+        readDepartment(departmentService);
         try (Statement s = con.createStatement()) {
             ResultSet rs = s.executeQuery("Select * from Employe");
             while (rs.next()) {
@@ -45,11 +45,11 @@ public class DataBaseReader implements Read {
                         telephone.setMobile(telList.getBoolean("mobile"));
                         telephone.setClientId(telList.getInt("clientid"));
                         clientSet.add(telephone);
-                        telephoneBase.getTelephoneBase().add(telephone);
+                        telephoneService.getTelephoneBase().add(telephone);
                     }
                 }
-                Department dep = findByName(department, departmentBase);
-                employeBase.getEmployeBase().add(new Employe(name, surname, ProcName, dep, clientSet, email, id));
+                Department dep = findByName(department, departmentService);
+                employeService.getEmployeBase().add(new Employe(name, surname, ProcName, dep, clientSet, email, id));
             }
 
         } catch (DataNotFound ex) {
@@ -58,19 +58,19 @@ public class DataBaseReader implements Read {
 
     }
 
-    private void readDepartment(DepartmentService departmentBase) throws SQLException {
+    private void readDepartment(DepartmentService departmentService) throws SQLException {
         try (Statement s = con.createStatement()) {
             ResultSet rs = s.executeQuery("Select * from Department");
             while (rs.next()) {
                 String department = rs.getString("department");
                 int chiefid = rs.getInt("chief_id");
-                departmentBase.getDepartmentBase().add(new Department(department, chiefid));
+                departmentService.getDepartmentBase().add(new Department(department, chiefid));
             }
         }
     }
 
-    private Department findByName(String departmentName, DepartmentService departmentBase) throws DataNotFound {
-        for (Department dep : departmentBase.getDepartmentBase()) {
+    private Department findByName(String departmentName, DepartmentService departmentService) throws DataNotFound {
+        for (Department dep : departmentService.getDepartmentBase()) {
             if (dep.getDepartmentName().equals(departmentName)) {
                 return dep;
             }
