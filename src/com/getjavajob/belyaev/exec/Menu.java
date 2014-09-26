@@ -114,7 +114,7 @@ public class Menu {
                 employe.addTelephone(tel);
                 telephoneService.addTelephone(tel);
             }else{
-                System.out.println("Number failed validaion and wasn't added ");
+                System.out.println("Number validate failed and wasn't added ");
             }
             System.out.println("Enter more phone? (Y/N)");
             ch = scanner.nextLine();
@@ -123,7 +123,7 @@ public class Menu {
         if (new Validator().validate(employe)) {
            employeService.add(employe);
         } else {
-            throw new WrongDataEntered("Failed at EmployeValidation");
+            throw new WrongDataEntered("Failed at Employe Validation");
         }
     }
     
@@ -137,6 +137,6 @@ public class Menu {
         Department department = getDepartament();
         System.out.println("Enter employe id:");
         int id = scanner.nextInt();
-        departmentService.setDepartmetChief(department,id);
+        departmentService.setDepartmetChief(department,employeService.get(id));
     }
 }

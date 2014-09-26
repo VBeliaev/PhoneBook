@@ -39,8 +39,8 @@ public class DepartmentService{
         throw new WrongDataEntered("ThereIsNoSuchDepartment");
     }
 
-    public void setDepartmetChief(Department department , int id) throws WrongDataEntered, DataNotFound {
-        department.setChief(EmployeService.get(id));
+    public void setDepartmetChief(Department department , Employe employe) throws WrongDataEntered, DataNotFound {
+        department.setChief(employe);
     }
 }
 
