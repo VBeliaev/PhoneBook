@@ -24,9 +24,9 @@ import java.util.logging.Logger;
 public class Menu {
     
     private Scanner scanner = new Scanner(System.in);
-    private DepartmentService depaetmentBase = new DepartmentService();
-    private EmployeService employeBase = new EmployeService();
-    private TelephoneService telephoneBase = new TelephoneService();
+    private DepartmentService departmentService = new DepartmentService();
+    private EmployeService employeService = new EmployeService();
+    private TelephoneService telephoneService = new TelephoneService();
     
     public Menu() {
         
@@ -49,6 +49,8 @@ public class Menu {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DataNotFound dataNotFound) {
+                dataNotFound.printStackTrace();
             }
         } while (!choice.equals("0"));
         
@@ -67,10 +69,10 @@ public class Menu {
                 setDepartmetChief();
                 break;
             case "4":
-                new DataBaseWriter().write(employeBase, depaetmentBase, telephoneBase);
+                new DataBaseWriter().write(employeService, departmentService, telephoneService);
                 break;
             case "5":
-                new DataBaseReader().read(employeBase, depaetmentBase, telephoneBase);
+                new DataBaseReader().read(employeService, departmentService, telephoneService);
                 break;
             case "6":
                 
@@ -83,7 +85,7 @@ public class Menu {
     private void enterDepartament() throws WrongDataEntered {
         System.out.println("Enter department name");
         String name = scanner.nextLine();
-        depaetmentBase.addDepartment(name);
+        departmentService.addDepartment(name);
     }
     
     private void enterEmploye() throws WrongDataEntered, Exception {
@@ -109,15 +111,17 @@ public class Menu {
             boolean isMobile = (scanner.nextLine().equals("y") || scanner.nextLine().equals("Y"));
             Telephone tel = new Telephone(country, city, number, isMobile, employe.getId());
             if (new Validator().validate(tel)) {
-                clientSet.add(tel);
-                telephoneBase.getTelephoneBase().add(tel);
+                employe.addTelephone(tel);
+                telephoneService.addTelephone(tel);
+            }else{
+                System.out.println("Number failed validaion and wasn't added ");
             }
-            System.out.println("Enter more phone& (Y/N)");
+            System.out.println("Enter more phone? (Y/N)");
             ch = scanner.nextLine();
         } while (ch.equals("Y") || ch.equals("y"));
         
         if (new Validator().validate(employe)) {
-            employeBase.getEmployeBase().add(employe);
+           employeService.add(employe);
         } else {
             throw new WrongDataEntered("Failed at EmployeValidation");
         }
@@ -126,13 +130,13 @@ public class Menu {
     private Department getDepartament() throws WrongDataEntered {
         System.out.println("Enter departmentName:");
         String depart = scanner.nextLine();
-        return depaetmentBase.getDepartament(depart);
+        return departmentService.getDepartament(depart);
     }
 
     private void setDepartmetChief() throws WrongDataEntered, DataNotFound {
         Department department = getDepartament();
         System.out.println("Enter employe id:");
         int id = scanner.nextInt();
-        depaetmentBase.setDepartmetChief(department,id);
+        departmentService.setDepartmetChief(department,id);
     }
 }

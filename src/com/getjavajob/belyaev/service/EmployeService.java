@@ -12,11 +12,11 @@ import java.util.TreeSet;
 
 public class EmployeService {
 
-    private static TreeSet<Employe> employeBase = new TreeSet<>();
+    private  TreeSet<Employe> employeBase = new TreeSet<>();
 
-    private static int globalTempId = 0;
+    private  int globalTempId = 0;
 
-    public static TreeSet<Employe> getEmployeBase() {
+    public  TreeSet<Employe> getEmployeBase() {
         return employeBase;
     }
 
@@ -24,11 +24,15 @@ public class EmployeService {
         this.employeBase = employeBase;
     }
 
-    public static int getGlobalTempId() {
-        return ++EmployeService.globalTempId;
+    public  int getGlobalTempId() {
+        return ++globalTempId;
     }
 
-    public static Employe get(int id) throws DataNotFound {
+    public  void add(Employe employe){
+        employeBase.add(employe);
+    }
+
+    public  Employe get(int id) throws DataNotFound {
         for (Employe emp : employeBase) {
             if (emp.getId() == id) {
                 return emp;
@@ -63,7 +67,7 @@ public class EmployeService {
         }
     }
 
-    public void addEmploye(String name, String surname, String project, Department department, String email) throws WrongDataEntered, Exception {
+    public void add(String name, String surname, String project, Department department, String email) throws WrongDataEntered, Exception {
         Employe employe = new Employe(name, surname, project, department, email);
         if (new Validator().validate(employe)) {
             employeBase.add(employe);

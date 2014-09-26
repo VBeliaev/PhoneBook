@@ -10,7 +10,7 @@ import java.util.*;
 
 
 public class DepartmentService{
-    private static TreeSet<Department> departmentBase = new TreeSet<>();
+    private  TreeSet<Department> departmentBase = new TreeSet<>();
 
     public void setDepartmentBase(TreeSet<Department> departmentBase) {
         this.departmentBase = departmentBase;
