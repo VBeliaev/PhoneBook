@@ -24,11 +24,28 @@ public class EmployeService {
     }
 
     public static int getGlobalTempId() {
-        return ++globalTempId;
+        return globalTempId;
     }
 
-    public  void add(Employe employe){
-        employeBase.add(employe);
+    public static void setGlobalTempId(int id){
+        globalTempId=id;
+    }
+
+    public  void add(Employe employe) throws WrongDataEntered {
+        if(new Validator().validate(employe)) {
+            employeBase.add(employe);
+        }else{
+            throw new WrongDataEntered("Employe validate failure");
+        }
+    }
+
+    public void add(String name, String surname, String project, Department department, String email) throws WrongDataEntered {
+        Employe employe = new Employe(name, surname, project, department, email);
+        if (new Validator().validate(employe)) {
+            employeBase.add(employe);
+        } else {
+            throw new WrongDataEntered("Employe validate failure");
+        }
     }
 
     public  Employe get(int id) throws DataNotFound {
@@ -66,17 +83,12 @@ public class EmployeService {
         }
     }
 
-    public void add(String name, String surname, String project, Department department, String email) throws WrongDataEntered {
-        Employe employe = new Employe(name, surname, project, department, email);
-        if (new Validator().validate(employe)) {
-            employeBase.add(employe);
-        } else {
-            throw new WrongDataEntered("Failed at EmployeValidation");
+    public void add(Telephone telephone) throws DataNotFound, WrongDataEntered {
+        if(new Validator().validate(telephone)) {
+            get(telephone.getClientId()).addTelephone(telephone);
+        }else{
+            throw new WrongDataEntered("Phone validate failure");
         }
-    }
-
-    public void addTelephone(int id, Telephone telephone) throws DataNotFound {
-        get(id).addTelephone(telephone);
     }
 
 }

@@ -52,5 +52,13 @@ public class DepartmentService{
             }
         }
     }
+
+    public void add(Department department) throws WrongDataEntered {
+        if(new Validator().validate(department)){
+            departmentBase.add(department);
+        }else{
+            throw new WrongDataEntered("Department validate failure");
+        }
+    }
 }
 

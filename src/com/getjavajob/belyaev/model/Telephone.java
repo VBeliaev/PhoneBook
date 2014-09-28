@@ -28,7 +28,7 @@ public class Telephone implements Comparable<Telephone>, ModelInterface {
     public int getClientId() {
         return clientId;
     }
-    
+
     public int getCountryCode() {
         return countryCode;
     }
@@ -61,9 +61,6 @@ public class Telephone implements Comparable<Telephone>, ModelInterface {
         this.number = number;
     }
 
-    public String showNumber(){
-        return String.valueOf(countryCode) + " " +String.valueOf(cityCode) + " " + String.valueOf(number) + " " + String.valueOf(mobile);
-    }
     @Override
     public int hashCode() {
         return this.cityCode + this.cityCode * 15 + this.number * 3;
@@ -106,8 +103,17 @@ public class Telephone implements Comparable<Telephone>, ModelInterface {
 
     @Override
     public String toString() {
-        return ("+" + String.valueOf(countryCode) + "(" + String.valueOf(cityCode) +")" + String.valueOf(number) + " (" + ((mobile)?"Mobile)":"Not mobile"));
+        return ("+" + String.valueOf(countryCode) + "(" + String.valueOf(cityCode) +")" + String.valueOf(number) + "(" + ((mobile)?"Mobile)":"Not mobile"));
     }
-    
-    
+
+    public Telephone fromString(String phone, int clientId){
+        String[] splitString = phone.split("[+()]");
+        this.setCountryCode(Integer.parseInt(splitString[0]));
+        this.setCityCode(Integer.parseInt(splitString[1]));
+        this.setNumber(Integer.parseInt(splitString[2]));
+        this.setMobile(Boolean.parseBoolean(splitString[3]));
+        this.setClientId(clientId);
+        return this;
+    }
+
 }

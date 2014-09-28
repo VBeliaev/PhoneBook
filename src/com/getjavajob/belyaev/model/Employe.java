@@ -65,6 +65,9 @@ public class Employe implements Comparable<Employe>, ModelInterface{
     }
     
     public void setId(int id) {
+        if(id< EmployeService.getGlobalTempId()){
+            EmployeService.setGlobalTempId(id);
+        }
         this.id = id;
     }
 
@@ -124,7 +127,6 @@ public class Employe implements Comparable<Employe>, ModelInterface{
         }
         return true;
     }
-    
 
     @Override
     public int compareTo(Employe o) {

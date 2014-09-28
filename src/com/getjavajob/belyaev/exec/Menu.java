@@ -109,8 +109,8 @@ public class Menu {
             boolean isMobile = (scanner.nextLine().equals("y") || scanner.nextLine().equals("Y"));
             Telephone tel = new Telephone(country, city, number, isMobile, employe.getId());
             if (new Validator().validate(tel)) {
+                telephoneService.add(tel);
                 employe.addTelephone(tel);
-                telephoneService.addTelephone(tel);
             }else{
                 System.out.println("Number validate failed and wasn't added ");
             }
