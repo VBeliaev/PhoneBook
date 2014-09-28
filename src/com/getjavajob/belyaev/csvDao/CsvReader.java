@@ -10,7 +10,6 @@ import com.getjavajob.belyaev.service.DepartmentService;
 import com.getjavajob.belyaev.service.EmployeService;
 import com.getjavajob.belyaev.service.TelephoneService;
 import com.getjavajob.belyaev.validator.Validator;
-import sun.reflect.generics.tree.Tree;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -19,7 +18,7 @@ import java.io.IOException;
 import java.util.TreeSet;
 
 /**
- * Created by Виталий on 27.09.2014.
+ * Created by ${Виталий} on ${27.09.2014.}
  */
 public class CsvReader implements Read {
 
@@ -48,12 +47,8 @@ public class CsvReader implements Read {
                     telephoneService.add(set);
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException | WrongDataEntered e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (WrongDataEntered wrongDataEntered) {
-            wrongDataEntered.printStackTrace();
         }
     }
     private void readDepartment(DepartmentService departmentService) {
@@ -70,14 +65,8 @@ public class CsvReader implements Read {
                     departmentService.add(department);
                 }
             }
-        } catch (FileNotFoundException e) {
+        } catch (IOException | DataNotFound | WrongDataEntered e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (DataNotFound dataNotFound) {
-            dataNotFound.printStackTrace();
-        } catch (WrongDataEntered wrongDataEntered) {
-            wrongDataEntered.printStackTrace();
         }
     }
         private TreeSet<Telephone> addPhones(Employe employe, String[] splitString) {

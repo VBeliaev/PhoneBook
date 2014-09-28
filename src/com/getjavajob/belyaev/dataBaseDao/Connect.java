@@ -32,9 +32,7 @@ public class Connect {
             String username = props.getProperty("jdbc.username");
             String password = props.getProperty("jdbc.password");
             con = DriverManager.getConnection(url, username, password);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
         return con;

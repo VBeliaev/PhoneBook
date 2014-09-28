@@ -43,9 +43,7 @@ public class Menu {
             choice = scanner.nextLine();
             try {
                 toDo(choice);
-            } catch (WrongDataEntered ex) {
-                Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
+            } catch (WrongDataEntered | Exception ex) {
                 Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
             } catch (DataNotFound dataNotFound) {
                 dataNotFound.printStackTrace();
