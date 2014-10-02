@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PhoneBook.iml" filepath="$PROJECT_DIR$/PhoneBook.iml" />
+      <module fileurl="file://$PROJECT_DIR$/src/main/web/WEB-INF/WEB-INF.iml" filepath="$PROJECT_DIR$/src/main/web/WEB-INF/WEB-INF.iml" />
     </modules>
   </component>
 </project>

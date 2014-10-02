@@ -49,6 +49,9 @@ public class EmployeService {
     }
 
     public  Employe get(int id) throws DataNotFound {
+        if(id==0){
+            return new Employe();
+        }
         for (Employe emp : employeBase) {
             if (emp.getId() == id) {
                 return emp;

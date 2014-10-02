@@ -1,18 +1,16 @@
 package com.getjavajob.belyaev.dataBaseDao;
 
-import com.getjavajob.belyaev.model.Employe;
-import com.getjavajob.belyaev.service.DepartmentService;
-import com.getjavajob.belyaev.service.EmployeService;
+
 import com.getjavajob.belyaev.daoInterfaces.Read;
 import com.getjavajob.belyaev.exeption.DataNotFound;
 import com.getjavajob.belyaev.model.Department;
+import com.getjavajob.belyaev.model.Employe;
 import com.getjavajob.belyaev.model.Telephone;
+import com.getjavajob.belyaev.service.DepartmentService;
+import com.getjavajob.belyaev.service.EmployeService;
 import com.getjavajob.belyaev.service.TelephoneService;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import java.sql.*;
 import java.util.TreeSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;

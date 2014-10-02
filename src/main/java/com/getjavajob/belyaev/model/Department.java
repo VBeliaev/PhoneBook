@@ -4,7 +4,7 @@ import com.getjavajob.belyaev.service.DepartmentService;
 
 public class Department extends DepartmentService  implements Comparable<Department>, ModelInterface{
     private String departmentName = "";
-    private Employe chief=new Employe();
+    private Employe chief=null;
     private int chiefID;
 
     public Department() {
