@@ -1,6 +1,4 @@
-<%@page import="com.getjavajob.belyaev.model.Employe"%>
-<%@page import="java.util.TreeSet" %>
-<%@page import="com.getjavajob.belyaev.service.EmployeService" %>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
     <head>
