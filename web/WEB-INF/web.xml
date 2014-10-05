@@ -4,13 +4,5 @@
            xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
 		  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
            version="3.0">
-    <servlet>
-        <servlet-name>EmployerEdit.jsp</servlet-name>
-        <jsp-file>/WEB-INF/jsp/EmployerEdit.jsp</jsp-file>
-    </servlet>
 
-    <servlet-mapping>
-        <servlet-name>EmployerEdit.jsp</servlet-name>
-        <url-pattern>/EmployerEdit</url-pattern>
-    </servlet-mapping>
 </web-app>
