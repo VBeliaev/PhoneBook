@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="phonebook-webapp:war">
+    <output-path>$PROJECT_DIR$/webapp/target</output-path>
+    <root id="archive" name="phonebook-webapp-1.0.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="phonebook-webapp:war exploded" />
+    </root>
+  </artifact>
+</component>

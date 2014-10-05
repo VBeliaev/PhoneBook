@@ -2,11 +2,11 @@
   
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.getjavajobs.library</groupId>
-  <artifactId>library</artifactId>
+  <groupId>com.getjavajob.phonebook</groupId>
+  <artifactId>phonebook</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>Library</name>
+  <name>Phonebook</name>
   <description>This is our first Web project in getJavaJob</description>
 
   <properties>
