@@ -6,6 +6,12 @@
         <element id="directory" name="classes">
           <element id="module-output" name="phonebook-webapp" />
         </element>
+        <element id="directory" name="lib">
+          <element id="archive" name="phonebook-server-1.0.0-SNAPSHOT.jar">
+            <element id="module-output" name="phonebook-server" />
+          </element>
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.33" />
+        </element>
       </element>
       <element id="javaee-facet-resources" facet="phonebook-webapp/web/Web" />
     </root>

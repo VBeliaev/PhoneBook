@@ -22,7 +22,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="PhoneBook" />
         <module name="phonebook-desktopui" />
         <module name="phonebook-server" />
         <module name="phonebook-webapp" />
@@ -30,6 +29,9 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="PhoneBook" target="1.7" />
+      <module name="phonebook-desktopui" target="1.7" />
+      <module name="phonebook-server" target="1.7" />
+      <module name="phonebook-webapp" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
