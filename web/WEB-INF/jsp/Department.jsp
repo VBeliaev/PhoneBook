@@ -1,6 +1,6 @@
-<%@page import="main.java.com.getjavajob.belyaev.model.Employe"%>
+<%@page import="com.getjavajob.belyaev.model.Employe"%>
 <%@page import="java.util.TreeSet" %>
-<%@page import="main.java.com.getjavajob.belyaev.service.EmployeService" %>
+<%@page import="com.getjavajob.belyaev.service.EmployeService" %>
 <html>
     <head>
         <title>Employe</title>
@@ -8,7 +8,7 @@
     <body>
         EMPLOYE<br/>
         <table>
-            <jsp:useBean id="EmployeService" class="main.java.com.getjavajob.belyaev.service.EmployeService" scope="page" />
+            <jsp:useBean id="EmployeService" class="com.getjavajob.belyaev.service.EmployeService" scope="page" />
             <c:set var="employes" value="${EmployeService.employeBase()}" />
 
             <tr>
@@ -46,7 +46,7 @@
                     </td>
                     <td>
                         <select> 
-                            <c:set var="phones" value="${employe.getTelephone()}"
+                            <c:set var="phones" value="${employe.getTelephone()}"/>
                                    <c:forEach var="phone" items="${phones.toString}">
                                     <option>${phone} </option>
                                 </c:forEach>
@@ -56,7 +56,7 @@
                             ${employe.getEmail()}
                         </td>
                         <td>
-                            <form method="post" action="'main.webapp.WEB-INF.jsp.employeEdit'"/>
+                            <form method="post" action="main.webapp.WEB-INF.jsp.employeEdit"/>
                             <input type="hidden" name ="employeId" value="${employe.getId()}" />
                             <input type="submit" value="change" />
                             </form>
@@ -64,7 +64,7 @@
                     </tr>
             </c:forEach>
         </table>
-        <form method="post" action="'main.webapp.WEB-INF.jsp.employeEdit'"/>
+        <form method="post" action="main.webapp.WEB-INF.jsp.employeEdit"/>
         <input type="hidden" name ="employeId" value="0" />
         <input type="button" value="add" />
     </form>

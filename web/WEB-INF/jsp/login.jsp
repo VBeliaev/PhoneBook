@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="main.java.com.getjavajob.belyaev.exec.Login" %>
+<%@ page import="com.getjavajob.belyaev.exec.Login" %>
 <html>
 <head>
     <title></title>
@@ -14,11 +14,11 @@
     <body>
 
         <form method="post" action=""/>
-            <p>Login:       <input type="text" name="login" value=""/></p>
-            <p>Password: <input type="text" name="password" value=""/></p>
-            <input type="hidden" name ="entered" value="login" />
-            <input type="submit" value="Login" />
-            Remember me<input type="checkbox" name="rememberMe"  />
+        <p>Login:       <input type="text" name="login" value=""/></p>
+        <p>Password: <input type="text" name="password" value=""/></p>
+        <input type="hidden" name ="entered" value="login" />
+        <input type="submit" value="Login" />
+        Remember me<input type="checkbox" name="rememberMe"  />
         </form>
     </body>
 </html>

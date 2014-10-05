@@ -1,6 +1,6 @@
-<%@page import="main.java.com.getjavajob.belyaev.model.Employe"%>
+<%@page import="com.getjavajob.belyaev.model.Employe"%>
 <%@page import="java.util.TreeSet" %>
-<%@page import="com.getjavajob.model.modelBase.EmployeBase" %>
+<%@page import="com.getjavajob.belyaev.service.EmployeService" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
     <head>
@@ -9,7 +9,7 @@
     <body>
         DEPARTMENT_EDIT<br/>
         <table>
-            <jsp:useBean id="EmployeService" class="main.java.com.getjavajob.belyaev.services.EmployeService" scope="page" />
+            <jsp:useBean id="EmployeService" class="com.getjavajob.belyaev.service.EmployeService" scope="page" />
             <c:set var="employeId" scope ="page" value="${Integer.parseInt(requestScope.employeId)}"/>
             <c:set var="employe" value="${EmployeService.get(employeId)}" />
 
@@ -48,7 +48,7 @@
                 </td>
                 <td>
                     <select> 
-                        <c:set var="phones" value="${employe.getTelephone()}"
+                        <c:set var="phones" value="${employe.getTelephone()}"/>
                                <c:forEach var="phone" items="${phones.toString}">
                                 <option>${phone} </option>
                             </c:forEach>
@@ -61,10 +61,10 @@
             </table>
             <c:if test="$authorId <1 ">
                 <input type="submit" value="add" >
-                <c:if/>
+                </c:if>
                 <c:if test="$authorId > 0">
                     <input type="submit" value="edit" >
-                    <c:if/>
+                    </c:if>
 
                 </body>
             </html>

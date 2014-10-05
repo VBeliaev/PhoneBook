@@ -56,7 +56,7 @@
                             ${employe.getEmail()}
                         </td>
                         <td>
-                            <form method="post" action="'main.webapp.WEB-INF.jsp.employeEdit'"/>
+                            <form method="post" action="main.webapp.WEB-INF.jsp.employeEdit"/>
                             <input type="hidden" name ="employeId" value="${employe.getId()}" />
                             <input type="submit" value="change" />
                             </form>
@@ -64,7 +64,7 @@
                     </tr>
             </c:forEach>
         </table>
-        <form method="post" action="'main.webapp.WEB-INF.jsp.employeEdit'"/>
+        <form method="post" action="main.webapp.WEB-INF.jsp.employeEdit"/>
         <input type="hidden" name ="employeId" value="0" />
         <input type="button" value="add" />
     </form>

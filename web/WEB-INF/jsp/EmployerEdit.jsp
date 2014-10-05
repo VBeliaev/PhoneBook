@@ -50,7 +50,7 @@
                     <select>
                         <c:set var="phones" value="${employe.getTelephone()}"/>
                                <c:forEach var="phone" items="${phones}">
-                                <option> <input type="text" name="employeDepartment" value="${${phone.toString()}}"/>  </option>
+                                <option> <input type="text" name="employeDepartment" value="${phone.toString()}}"/>  </option>
                             </c:forEach>
                         </select>
                     </td>
