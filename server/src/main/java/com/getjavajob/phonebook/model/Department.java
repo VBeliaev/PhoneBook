@@ -1,24 +1,12 @@
 package com.getjavajob.phonebook.model;
 
+import com.getjavajob.phonebook.dataBaseDao.DepartmentDao;
 import com.getjavajob.phonebook.service.DepartmentService;
 
-public class Department extends DepartmentService  implements Comparable<Department>, ModelInterface{
-    private String departmentName = "";
-    private Employe chief=null;
+public class Department  implements ModelInterface{
+    private String departmentName;
+    private Employe chief;
     private int chiefID;
-
-    public Department() {
-    }
-
-    public Department(String departmentName, int chiefID) {
-        this.departmentName = departmentName;
-        this.chiefID = chiefID;
-    }
-
-    public Department(String name) {
-        this.departmentName=name;
-
-    }
 
     public String getDepartmentName() {
         return departmentName;
@@ -72,15 +60,5 @@ public class Department extends DepartmentService  implements Comparable<Departm
         return true;
     }
 
-    @Override
-    public int compareTo(Department o) {
-      if(this.hashCode()<o.hashCode()){
-          return -1;
-      }else if ( this.hashCode()==o.hashCode()){
-          return 0;
-      }else{
-          return 1;
-      }
-    }
     
 }

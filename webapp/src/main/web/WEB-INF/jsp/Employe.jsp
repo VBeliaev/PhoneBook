@@ -1,72 +1,48 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
 <html>
-    <head>
-        <title>Employe</title>
-    </head>
-    <body>
-        EMPLOYE<br/>
-        <table>
-            <jsp:useBean id="EmployeService" class="com.getjavajob.phonebook.service.EmployeService" scope="page" />
-            <c:set var="employes" value="${EmployeService.getEmployeBase()}" />
+<head>
+    <title>Employe page</title>
+</head>
+<body>
 
-            <tr>
-                <th>
-                    NAME
-                </th>
-                <th>
-                    SURNAME
-                </th>
-                <th>
-                    PROJECT_NAME
-                </th>
-                <th>
-                    DEPARTMENT
-                </th>
-                <th>
-                    TELEPHONE_LIST
-                </th>
-                <th>
-                    EMAIL
-                </th>
-            </tr>
-            <c:forEach var="employe" items="${employes}">
-                <tr>                    <td>
-                        ${employe.getName()}
-                    </td>
-                    <td>
-                        ${employe.getSurname()}
-                    </td>
-                    <td>
-                        ${employe.getProjectName()}
-                    </td>
-                    <td>
-                        ${employe.getDepartment()}
-                    </td>
-                    <td>
-                        <select> 
-                            <c:set var="phones" value="${employe.getTelephone()}"/>
-                                   <c:forEach var="phone" items="${phones.toString}">
-                                    <option>${phone} </option>
-                                </c:forEach>
-                            </select>
-                        </td>
-                        <td>
-                            ${employe.getEmail()}
-                        </td>
-                        <td>
-                            <form method="post" action="main.webapp.WEB-INF.jsp.employeEdit"/>
-                            <input type="hidden" name ="employeId" value="${employe.getId()}" />
-                            <input type="submit" value="change" />
-                            </form>
-                        </td>
-                    </tr>
-            </c:forEach>
-        </table>
-        <form method="post" action="main.webapp.WEB-INF.jsp.employeEdit"/>
-        <input type="hidden" name ="employeId" value="0" />
-        <input type="button" value="add" />
-    </form>
+<!--<h1>Author table</h1> -->
+<h1>${requestScope.len}</h1>
+<table border="1px solid black">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>SURNAME</th>
+        <th>PROJECT</th>
+        <th>EMAIL</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    <c:forEach var="employe" items="${requestScope.employeList}">
+        <td>${employe.getId()}</td>
+        <td>${employe.getName()}</td>
+        <td>${employe.getSurname()}</td>
+        <td>${employe.getProjectName()}</td>
+        <td>${employe.getEmail()}</td>
+        <td>${employe.getBirthPlace()}</td>
+        <td>
+            <form action="Edit" method="post">
+                <input type="hidden" name="authorId" value=${authors.getId()}>
+                <input type="submit" value="Update">
+            </form>
+        </td>
+        <td>
+            <form action="Delete" method="post">
+                <input type="hidden" name="commandType" value="delete">
+                <input type="hidden" name="authorId" value=${authors.getId()}>
+                <input type="submit" value="Delete">
+            </form>
+        </td>
+    </c:forEach>
+</table>
+
+<br>
+
+<input type="button" value="Add" onClick="document.location='authorAdd'">
 </body>
 </html>
+

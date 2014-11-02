@@ -1,6 +1,8 @@
 package com.getjavajob.phonebook.model;
 
 
+import java.io.Serializable;
+
 public class Telephone implements Comparable<Telephone>, ModelInterface {
 
     private int countryCode;
@@ -8,17 +10,28 @@ public class Telephone implements Comparable<Telephone>, ModelInterface {
     private int number;
     private boolean mobile;
     private int clientId;
+    private String stringNumber;
+
+
 
     public Telephone() {
-
     }
 
-    public Telephone(int countryCode, int cityCode, int number, boolean mobile, int clientId) {
+    public Telephone(int countryCode, int cityCode, int number, boolean mobile, int clientId, String stringNumber) {
         this.countryCode = countryCode;
         this.cityCode = cityCode;
         this.number = number;
         this.mobile = mobile;
         this.clientId = clientId;
+        this.stringNumber = stringNumber;
+    }
+
+    public String getStringNumber() {
+        return stringNumber;
+    }
+
+    public void setStringNumber(String stringNumber) {
+        this.stringNumber = stringNumber;
     }
 
     public int getCityCode() {

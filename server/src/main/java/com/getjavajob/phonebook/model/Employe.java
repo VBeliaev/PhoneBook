@@ -2,42 +2,43 @@ package com.getjavajob.phonebook.model;
 
 import com.getjavajob.phonebook.service.EmployeService;
 
+import java.util.List;
 import java.util.TreeSet;
 
 
 public class Employe implements Comparable<Employe>, ModelInterface{
-    private String name="";
-    private String surname="";
-    private String projectName="";
-    private Department department=new Department();
-    private TreeSet<Telephone> telephone = new TreeSet<>();
+    private String name;
+    private String surname;
+    private String projectName;
+    private List<Department> departments;
+    private TreeSet<Telephone> telephone;
     private String email="";
     private int id = 0;
 
     public Employe() {
     }
 
-    public Employe(String name, String surname, String projectName, Department department,TreeSet<Telephone> telephone, String email, int id){
+    public Employe(String name, String surname, String projectName, List<Department> departments,TreeSet<Telephone> telephone, String email, int id){
         this.name =name;
         this.surname=surname;
         this.projectName =projectName;
-        this.department= department;
+        this.departments= departments;
         this.telephone = telephone;
         this.email= email;
         this.id=id;
     }
 
-    public Employe(String name, String surname, String projectName, Department department, String email) {
+    public Employe(String name, String surname, String projectName, List<Department> departments, String email) {
         this.name = name;
         this.surname = surname;
         this.projectName = projectName;
-        this.department = department;
+        this.departments = departments;
         this.email = email;
         this.id = (EmployeService.getGlobalTempId()+1);
     }
 
-    public Department getDepartment() {
-        return department;
+    public List<Department> getDepartments() {
+        return departments;
     }
 
     public String getEmail() {
@@ -71,8 +72,8 @@ public class Employe implements Comparable<Employe>, ModelInterface{
         this.id = id;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartments(List<Department> departments) {
+        this.departments = departments;
     }
 
     public void setEmail(String email) {
@@ -119,10 +120,10 @@ public class Employe implements Comparable<Employe>, ModelInterface{
         if (hashCode() != e.hashCode()) {
             return false;
         }
-        if (((Employe) obj).getName().equals(this.getName()) && ((Employe) obj).getSurname().equals(this.getSurname()) && ((Employe) obj).getDepartment().equals(this.getDepartment()) && ((Employe) obj).getProjectName().equals(this.getProjectName()) && ((Employe) obj).getTelephone().equals(this.getTelephone()) ) {
+        if (((Employe) obj).getName().equals(this.getName()) && ((Employe) obj).getSurname().equals(this.getSurname()) && ((Employe) obj).getDepartments().equals(this.getDepartments()) && ((Employe) obj).getProjectName().equals(this.getProjectName()) && ((Employe) obj).getTelephone().equals(this.getTelephone()) ) {
             return true;
         }
-        if ((this.getName().equals("")) && (this.getSurname().equals("")) && (this.getDepartment().getDepartmentName().equals("")) && (this.getProjectName().equals("")) && (this.getTelephone().equals(new TreeSet<Telephone>())) ) {
+        if ((this.getName().equals("")) && (this.getSurname().equals("")) && (this.getDepartments()==null) && (this.getProjectName().equals("")) && (this.getTelephone().equals(new TreeSet<Telephone>())) ) {
             return false;
         }
         return true;

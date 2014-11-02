@@ -1,4 +1,4 @@
-package com.getjavajob.phonebook.csvDao;
+/*package com.getjavajob.phonebook.csvDao;
 
 
 import com.getjavajob.phonebook.daoInterfaces.Read;
@@ -20,7 +20,7 @@ import java.util.TreeSet;
 /**
  * Created by ${Виталий} on ${27.09.2014.}
  */
-public class CsvReader implements Read {
+/*public class CsvReader implements Read {
 
     private Validator validator = new Validator();
 
@@ -82,3 +82,4 @@ public class CsvReader implements Read {
             return setPhone;
         }
     }
+*/

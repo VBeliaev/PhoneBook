@@ -1,4 +1,4 @@
-package com.getjavajob.phonebook.csvDao;
+/*package com.getjavajob.phonebook.csvDao;
 
 
 import com.getjavajob.phonebook.daoInterfaces.Write;
@@ -15,7 +15,7 @@ import java.io.IOException;
 /**
  * Created by Виталий on 27.09.2014.
  */
-public class CsvWriter implements Write {
+/*public class CsvWriter implements Write {
 
     private DepartmentService departmentService;
     private EmployeService employeService;
@@ -51,4 +51,4 @@ public class CsvWriter implements Write {
             e.printStackTrace();
         }
     }
-}
+}*/

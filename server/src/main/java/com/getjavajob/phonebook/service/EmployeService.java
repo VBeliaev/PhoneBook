@@ -1,67 +1,71 @@
 package com.getjavajob.phonebook.service;
 
-import com.getjavajob.phonebook.exeption.DataNotFound;
-import com.getjavajob.phonebook.exeption.WrongDataEntered;
-import com.getjavajob.phonebook.model.Department;
+import com.getjavajob.phonebook.dataBaseDao.EmployeDao;
 import com.getjavajob.phonebook.model.Employe;
-import com.getjavajob.phonebook.model.Telephone;
 import com.getjavajob.phonebook.validator.Validator;
+import org.hibernate.service.spi.ServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.TreeSet;
+import java.util.List;
 
+@Service
 public class EmployeService {
 
-    private  TreeSet<Employe> employeBase = new TreeSet<>();
-
+    @Autowired
+    private EmployeDao employeDao;
+    @Autowired
+    private Validator validator;
     private  static int globalTempId = 0;
-
-    public  TreeSet<Employe> getEmployeBase() {
-        return employeBase;
+    public EmployeService(EmployeDao employeDao) {
+        this.employeDao = employeDao;
     }
 
-    public void setEmployeBase(TreeSet<Employe> employeBase) {
-        this.employeBase = employeBase;
-    }
-
-    public static int getGlobalTempId() {
-        return globalTempId;
-    }
-
-    public static void setGlobalTempId(int id){
-        globalTempId=id;
-    }
-
-    public  void add(Employe employe) throws WrongDataEntered {
-        if(new Validator().validate(employe)) {
-            employeBase.add(employe);
+    @Transactional
+    public Employe add(Employe employe) throws ServiceException {
+        if(validator.validate(employe)){
+            return employeDao.add(employe);
         }else{
-            throw new WrongDataEntered("Employe validate failure");
+            throw new ServiceException("Fall at employeAdd");
         }
     }
-
-    public void add(String name, String surname, String project, Department department, String email) throws WrongDataEntered {
-        Employe employe = new Employe(name, surname, project, department, email);
-        if (new Validator().validate(employe)) {
-            employeBase.add(employe);
-        } else {
-            throw new WrongDataEntered("Employe validate failure");
+    @Transactional
+    public Employe get(int id) throws ServiceException {
+        try{
+            return employeDao.get(id);
+        }catch (Exception e){
+            throw new ServiceException( "Fall at employeGet",e);
         }
     }
-
-    public  Employe get(int id) throws DataNotFound {
-        if(id==0){
-            return new Employe();
+    @Transactional
+    public Employe update(Employe employe) throws ServiceException {
+        if(validator.validate(employe)) {
+            return employeDao.update(employe);
+        }else{
+            throw new ServiceException("Fall at employeUpdate");
         }
-        for (Employe emp : employeBase) {
-            if (emp.getId() == id) {
-                return emp;
-            }
+    }
+    @Transactional
+    public void delete(int id) throws ServiceException{
+        try{
+            employeDao.delete(id);
+        }catch (Exception e){
+            throw new ServiceException("Fall at employeDelete",e);
         }
-        throw new DataNotFound("Threr is no such id");
+    }
+    @Transactional
+    public List<Employe> getAll() throws ServiceException{
+        try {
+            return employeDao.getAll();
+        }catch (Exception e){
+            throw new ServiceException("Fall at employeGetAll");
+        }
     }
 
     public void search(String searchString) {
         String[] splitString = searchString.split(" ");
+        List<Employe> employeBase = getAll();
         if (splitString.length == 1) {
             String pattern = "";
             pattern = pattern.concat(splitString[0]);
@@ -86,12 +90,70 @@ public class EmployeService {
         }
     }
 
-    public void add(Telephone telephone) throws DataNotFound, WrongDataEntered {
-        if(new Validator().validate(telephone)) {
+    public static int getGlobalTempId() {
+        return globalTempId;
+    }
+
+    public static void setGlobalTempId(int id){
+        globalTempId=id;
+    }
+
+
+    {
+/*
+    private  TreeSet<Employe> employeBase = new TreeSet<>();
+
+    private  static int globalTempId = 0;
+
+    public  TreeSet<Employe> getEmployeBase() {
+        return employeBase;
+    }
+
+    public void setEmployeBase(TreeSet<Employe> employeBase) {
+        this.employeBase = employeBase;
+    }
+
+    public static int getGlobalTempId() {
+        return globalTempId;
+    }
+
+    public static void setGlobalTempId(int id){
+        globalTempId=id;
+    }
+
+    /*public  void add(Employe employe) throws WrongDataEntered {
+        if(new Validator().validate(employe)) {
+            employeBase.add(employe);
+        }else{
+            throw new WrongDataEntered("Employe validate failure");
+        }
+    }
+
+    public void add(String name, String surname, String project, Department department, String email) throws WrongDataEntered {
+        Employe employe = new Employe(name, surname, project, department, email);
+        if (new Validator().validate(employe)) {
+            employeBase.add(employe);
+        } else {
+            throw new WrongDataEntered("Employe validate failure");
+        }
+    }
+
+     public void add(Telephone telephone) throws DataNotFound, WrongDataEntered {
+        if(validator.validate(telephone)) {
             get(telephone.getClientId()).addTelephone(telephone);
         }else{
             throw new WrongDataEntered("Phone validate failure");
         }
     }
+    */
+    } // old code  delete at final rewiew
+
+
+
+
+
+
+
+
 
 }
