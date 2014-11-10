@@ -16,6 +16,9 @@ import java.util.List;
 @Controller
 public class EmployeController {
 
+    public EmployeController() {
+    }
+
     @Autowired
     private EmployeService employeService;
 
@@ -23,6 +26,7 @@ public class EmployeController {
     public String view(
             HttpServletRequest request)
     {
+        System.out.println("@RequestMapping(\"/employe\")");
         //try {
             List<Employe> employeList = employeService.getAll();
             int len = employeList.size();
@@ -31,6 +35,16 @@ public class EmployeController {
         //} catch (ServiceException e) {
         //    e.printStackTrace();
        // }
+        return "/WEB-INF/jsp/employe.jsp";
+    }
+
+    @RequestMapping("/employeEdit")
+    public String employeEdit(HttpServletRequest request)
+    {
+        //try {
+        Employe employe; // how to get id from jsp
+        //next we change other values
+        // }
         return "/WEB-INF/jsp/employe.jsp";
     }
 }

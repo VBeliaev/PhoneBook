@@ -24,6 +24,10 @@ public class DepartmentDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    public DepartmentDao() {
+
+    }
+
     @Transactional
     public List<Department> getAll() throws SQLException, DAOException {
         Session session = sessionFactory.getCurrentSession();

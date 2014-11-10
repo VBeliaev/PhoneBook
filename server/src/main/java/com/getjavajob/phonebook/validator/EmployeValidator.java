@@ -2,7 +2,9 @@ package com.getjavajob.phonebook.validator;
 
 import com.getjavajob.phonebook.model.Employe;
 import com.getjavajob.phonebook.model.ModelInterface;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmployeValidator implements ValidInterface {
 
     private Employe employe;

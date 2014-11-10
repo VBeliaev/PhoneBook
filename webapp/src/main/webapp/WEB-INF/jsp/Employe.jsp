@@ -13,6 +13,7 @@
         <th>ID</th>
         <th>NAME</th>
         <th>SURNAME</th>
+        <th>DEPARTMENT</th>
         <th>PROJECT</th>
         <th>EMAIL</th>
         <th colspan="2">Actions</th>
@@ -21,9 +22,9 @@
         <td>${employe.getId()}</td>
         <td>${employe.getName()}</td>
         <td>${employe.getSurname()}</td>
+        <td>${employe.getDepartmentName()}</td>
         <td>${employe.getProjectName()}</td>
         <td>${employe.getEmail()}</td>
-        <td>${employe.getBirthPlace()}</td>
         <td>
             <form action="Edit" method="post">
                 <input type="hidden" name="authorId" value=${authors.getId()}>

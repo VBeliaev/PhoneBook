@@ -12,24 +12,12 @@
             <c:set var="employe" value="${EmployeService.get(Integer.parseInt(employeId))}" />
 
             <tr>
-                <th>
-                    NAME
-                </th>
-                <th>
-                    SURNAME
-                </th>
-                <th>
-                    PROJECT_NAME
-                </th>
-                <th>
-                    DEPARTMENT
-                </th>
-                <th>
-                    TELEPHONE_LIST
-                </th>
-                <th>
-                    EMAIL
-                </th>
+                <th>NAME</th>
+                <th>SURNAME</th>
+                <th>PROJECT_NAME</th>
+                <th>DEPARTMENT</th>
+                <th>TELEPHONE_LIST</th>
+                <th>EMAIL</th>
             </tr>   
             <tr>
                 <td>

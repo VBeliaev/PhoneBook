@@ -1,15 +1,17 @@
 
-
+/*
 package com.getjavajob.phonebook.validator;
 
 import com.getjavajob.phonebook.model.Department;
 import com.getjavajob.phonebook.model.Employe;
 import com.getjavajob.phonebook.model.ModelInterface;
 import com.getjavajob.phonebook.model.Telephone;
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
-
+@Component
 public class Validator {
     
     private Map<Class,ValidInterface> valid = new HashMap<>();
@@ -41,4 +43,4 @@ public class Validator {
     
 
    
-}
+} */

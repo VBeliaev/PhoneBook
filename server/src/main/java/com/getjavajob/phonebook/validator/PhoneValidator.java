@@ -2,12 +2,17 @@ package com.getjavajob.phonebook.validator;
 
 import com.getjavajob.phonebook.model.ModelInterface;
 import com.getjavajob.phonebook.model.Telephone;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PhoneValidator implements ValidInterface{
     private Telephone telephone;
 
     private void setTelephone(Telephone telephone) {
         this.telephone = telephone;
+    }
+
+    public PhoneValidator() {
     }
 
     @Override

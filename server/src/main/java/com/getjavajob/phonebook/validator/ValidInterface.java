@@ -6,12 +6,14 @@
 package com.getjavajob.phonebook.validator;
 
 import com.getjavajob.phonebook.model.ModelInterface;
+import org.springframework.stereotype.Component;
 
 
 /**
  *
  * @author Виталий
  */
+@Component
 public interface ValidInterface {
     
     boolean validate(ModelInterface mi);

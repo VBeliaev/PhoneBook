@@ -8,6 +8,13 @@ public class Department  implements ModelInterface{
     private Employe chief;
     private int chiefID;
 
+    public Department(String departmentName) {
+        this.departmentName = departmentName;
+    }
+
+    public Department() {
+    }
+
     public String getDepartmentName() {
         return departmentName;
     }

@@ -2,7 +2,8 @@ package com.getjavajob.phonebook.service;
 
 import com.getjavajob.phonebook.dataBaseDao.DepartmentDao;
 import com.getjavajob.phonebook.model.Department;
-import com.getjavajob.phonebook.validator.Validator;
+import com.getjavajob.phonebook.validator.DepartmentValidator;
+//import com.getjavajob.phonebook.validator.Validator;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,10 @@ public class DepartmentService {
     @Autowired
     private DepartmentDao departmentDao;
     @Autowired
-    private Validator validator;
+    private DepartmentValidator validator;
+
+    public DepartmentService() {
+    }
 
     public DepartmentService(DepartmentDao departmentDao) {
         this.departmentDao = departmentDao;

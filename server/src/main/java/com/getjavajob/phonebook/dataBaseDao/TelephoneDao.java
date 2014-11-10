@@ -22,6 +22,9 @@ public class TelephoneDao {
     @Autowired
     private SessionFactory sessionFactory;
 
+    public TelephoneDao() {
+    }
+
     @Transactional
     public List<Telephone> getAll() throws SQLException, DAOException {
         Session session = sessionFactory.getCurrentSession();

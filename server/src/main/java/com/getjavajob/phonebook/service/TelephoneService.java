@@ -4,7 +4,8 @@ package com.getjavajob.phonebook.service;
 
 import com.getjavajob.phonebook.dataBaseDao.TelephoneDao;
 import com.getjavajob.phonebook.model.Telephone;
-import com.getjavajob.phonebook.validator.Validator;
+import com.getjavajob.phonebook.validator.PhoneValidator;
+//import com.getjavajob.phonebook.validator.Validator;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,10 +24,13 @@ public class TelephoneService {
     @Autowired
     private TelephoneDao telephoneDao;
     @Autowired
-    private Validator validator;
+    private PhoneValidator validator;
 
     public TelephoneService (TelephoneDao telephoneDao) {
         this.telephoneDao = telephoneDao;
+    }
+
+    public TelephoneService() {
     }
 
     @Transactional

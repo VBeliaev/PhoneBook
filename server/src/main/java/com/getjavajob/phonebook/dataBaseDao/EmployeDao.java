@@ -18,9 +18,12 @@ import java.util.List;
  */
 @Repository
 public class EmployeDao {
-    @Qualifier("sessionFactory")
+    //@Qualifier("sessionFactory")
     @Autowired
     private SessionFactory sessionFactory;
+
+    public EmployeDao() {
+    }
 
     @Transactional
     public List<Employe> getAll() throws SQLException, DAOException {
