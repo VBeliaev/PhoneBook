@@ -22,7 +22,19 @@ public class EmployeController {
     @Autowired
     private EmployeService employeService;
 
-    @RequestMapping("/employe")
+
+    @RequestMapping("/")
+    public String home(HttpServletRequest request) {
+        System.out.println("@RequestMapping(\"/try\")");
+
+         return "WEB-INF/jsp/employes.jsp";
+      //  return "WEB-INF/jsp/home.jsp";
+    }
+
+
+
+
+    @RequestMapping("/employes")
     public String view(
             HttpServletRequest request)
     {
@@ -32,10 +44,13 @@ public class EmployeController {
             int len = employeList.size();
             request.setAttribute("len",len);
             request.setAttribute("employeList", employeList);
+        System.out.println(employeList.size());
         //} catch (ServiceException e) {
         //    e.printStackTrace();
        // }
-        return "/WEB-INF/jsp/employe.jsp";
+        System.out.println("Before return ");
+       return "WEB-INF/jsp/employes.jsp";
+       // return "WEB-INF/jsp/home.jsp";
     }
 
     @RequestMapping("/employeEdit")
@@ -45,6 +60,6 @@ public class EmployeController {
         Employe employe; // how to get id from jsp
         //next we change other values
         // }
-        return "/WEB-INF/jsp/employe.jsp";
+        return "WEB-INF/jsp/employe.jsp";
     }
 }
